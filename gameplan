@@ -1,0 +1,10 @@
+Function:
+
+Keep turn order, after moving through every turn reset (either rerolling initiative or keeping order)
+
+able to remove items from turn order
+
+ability to save and load fights
+
+log initiative bonuses to items
+
