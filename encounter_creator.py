@@ -10,16 +10,19 @@ class EncounterBox(Toplevel):
         # File info
         self.file_text = Text(self, width=20, height=1)
         self.file_text.insert(INSERT, "Encounter file name:")
+        self.file_text.config(state=DISABLED)
         self.file_text.grid(row=0, column=0, columnspan=1, sticky=NW)
         self.file_entry = Entry(self)
         self.file_entry.grid(row=0, column=1, columnspan=1, sticky=NW)
         # Input info
         self.name_text = Text(self, width=20, height=1)
         self.name_text.insert(INSERT, "Name")
+        self.name_text.config(state=DISABLED)
         self.name_text.grid(row=1, column=0, columnspan=1, sticky=NW)
         self.bonus_text = Text(self, width=20, height=1)
         self.bonus_text.insert(INSERT, "Bonus")
         self.bonus_text.grid(row=1, column=1, columnspan=1, sticky=NW)
+        self.bonus_text.config(state=DISABLED)
         # Input boxes
         self.en1 = Entry(self)
         self.en1.grid(row=3, column=0, columnspan=1, sticky=NW)
@@ -47,8 +50,12 @@ class EncounterBox(Toplevel):
         name = self.file_entry.get()
         name += ".csv"
         file = open(name, 'w')
+        mons = iter(mons)
         for x in mons:
-            file.write(x)
-            file.write(", ")
-            
+            if x:
+                file.write(x)
+                file.write(", ")
+                file.write(next(mons))
+                file.write("\n")
         file.close()
+        self.destroy()

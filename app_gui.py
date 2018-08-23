@@ -22,10 +22,7 @@ class TurnGUI(Tk):
 
         self.close_button = Button(self, text="Next turn", command=self.quit)
         self.close_button.grid(row=0, column=4, columnspan=1)
-
-        self.entry_test = Entry(self)
-        self.entry_test.grid(row=1, column=1)
-
+        
     def greet(self):
         print("aids")
 
